@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fa">
+  <meta name="description" content="TalentScore — прозрачное сравнение достижений школьников из регионов Казахстана. Интерактивный демонстрационный прототип для HackHub.">
+  <title>TalentScore — талант виден по делу</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="#student" aria-label="TalentScore, главная"><span class="brand-mark" aria-hidden="true">T<span>.</span></span><span>TalentScore</span></a>
+      <nav class="main-nav" aria-label="Разделы прототипа">
+        <button class="nav-link is-active" data-view="student" aria-current="page">Школьнику</button>
+        <button class="nav-link" data-view="buyer">Фонду и вузу</button>
+        <button class="nav-link" data-view="method">Как считается</button>
+      </nav>
+      <span class="demo-badge"><span class="demo-dot"></span> Демо · тестовые данные</span>
+    </header>
+
+    <main id="main">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> HACKHUB / ТАЛАНТ ДО ВУЗА</div>
+          <h1 id="intro-title">Сильный результат<br><em>видно из любого города.</em></h1>
+          <p>Достижения разных конкурсов — в одной понятной шкале. Школьник видит, куда расти. Фонд и вуз находят кандидатов из регионов по сопоставимым критериям.</p>
+        </div>
+        <div class="intro-graphic" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="graphic-center"><span>01</span><strong>Талант</strong><small>не зависит от адреса</small></div>
+          <span class="graphic-label label-top">Актобе</span><span class="graphic-label label-bottom">Шымкент</span><span class="graphic-label label-right">Костанай</span>
+        </div>
+      </section>
+
+      <div class="notice" role="note"><strong>Как читать демо.</strong> Все участники, достижения и согласия вымышлены. Баллы иллюстрируют механику, а не реальный рейтинг школьников Казахстана. Новые записи хранятся только в вашем браузере.</div>
+
+      <section id="student-view" class="view" aria-labelledby="student-title">
+        <div class="section-head"><div><span class="kicker">01 / ШКОЛЬНИК</span><h2 id="student-title">Мой профиль</h2><p>Понятная оценка и следующий шаг — даже до появления первого покупателя.</p></div><label class="profile-picker">Пример профиля<select id="profile-select"><option value="0">Актобе · информатика</option><option value="1">Шымкент · инженерия</option><option value="2">Костанай · анализ данных</option></select></label></div>
+        <div class="student-layout">
+          <div class="main-column">
+            <article class="score-panel">
+              <div class="panel-topline"><span>УЧЕБНЫЙ ИНДЕКС</span><span id="score-state" class="state-pill">Только подтверждённые</span></div>
+              <div class="score-main"><div><div class="score-value"><span id="score-number">0</span><span class="score-max">/ 100</span></div><h3 id="profile-name">Кандидат A-014</h3><p id="profile-meta">9 класс · Актобе · Информатика</p></div><div class="score-ring" aria-hidden="true"><svg viewBox="0 0 128 128"><circle class="ring-track" cx="64" cy="64" r="52"/><circle id="ring-progress" class="ring-progress" cx="64" cy="64" r="52"/></svg><span id="ring-label">0</span></div></div>
+              <div class="score-foot"><span>Методика открыта: уровень × результат конкурса</span><button class="text-button" data-view="method">Показать расчёт <span aria-hidden="true">↗</span></button></div>
+            </article>
+            <div class="content-block"><div class="block-head"><div><h3>Достижения</h3><p>В индекс входят только записи, подтверждённые организатором.</p></div><span id="verified-count" class="count-badge">0 подтверждено</span></div><div id="achievements-list" class="achievement-list"></div></div>
+            <div class="content-block add-block"><div class="block-head"><div><h3>Добавить достижение</h3><p>Оно появится со статусом «Ожидает проверки» и не изменит индекс.</p></div></div><form id="achievement-form" class="add-form"><label>Название конкурса<input name="title" required maxlength="80" placeholder="Например, олимпиада по информатике"></label><div class="form-row"><label>Уровень<select name="level"><option value="city">Городской</option><option value="regional">Областной</option><option value="national">Республиканский</option><option value="international">Международный</option></select></label><label>Результат<select name="result"><option value="participant">Участие</option><option value="finalist">Финал</option><option value="medal">Призовое место</option><option value="winner">Победа</option></select></label></div><button class="primary-button" type="submit">Добавить на проверку <span aria-hidden="true">↗</span></button></form></div>
+          </div>
+          <aside class="side-column"><div class="side-panel next-step"><span class="side-index">СЛЕДУЮЩИЙ ШАГ</span><h3 id="next-title">Следующий шаг</h3><p id="next-copy"></p><div id="next-detail" class="next-detail"></div></div><div class="side-panel privacy-panel"><span class="side-index">КОНТРОЛЬ ДАННЫХ</span><h3>Видимость для фондов</h3><p>Без отдельного согласия покупатель видит только обезличенный результат. Контактов в демо нет.</p><label class="switch-row"><span>Показать демо-профиль в поиске</span><input id="consent-toggle" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label><small>Переключатель меняет только этот демонстрационный экран.</small></div></aside>
+        </div>
+      </section>
+
+      <section id="buyer-view" class="view" aria-labelledby="buyer-title" hidden>
+        <div class="section-head"><div><span class="kicker">02 / ФОНД И ВУЗ</span><h2 id="buyer-title">Найти талант в регионе</h2><p>Сравнивайте подтверждённые результаты по единой шкале. Личные данные закрыты до согласия.</p></div></div>
+        <div class="buyer-layout"><aside class="filters"><div class="filter-head"><h3>Фильтры</h3><button id="reset-filters" class="text-button">Сбросить</button></div><label>Направление<select id="filter-domain"><option value="all">Все направления</option><option value="CS">Информатика</option><option value="Engineering">Инженерия</option><option value="Data">Анализ данных</option></select></label><label>Регион<select id="filter-region"><option value="all">Все регионы</option><option value="Актобе">Актобе</option><option value="Шымкент">Шымкент</option><option value="Костанай">Костанай</option></select></label><label>Индекс от <output id="min-output">0</output><input id="filter-min" type="range" min="0" max="90" step="10" value="0"></label><div class="filter-note">Результаты этой страницы сформированы из вымышленных профилей. Реального поиска и доступа к детям нет.</div></aside><div class="results"><div class="results-head"><h3>Кандидаты <span id="result-count">0</span></h3><span>По убыванию индекса</span></div><div id="candidate-list" class="candidate-list"></div><div id="empty-results" class="empty-results" hidden><strong>По этим условиям никого нет</strong><p>Попробуйте расширить регион или снизить минимальный индекс.</p></div></div></div>
+        <div class="business-strip"><div><span class="kicker">МОДЕЛЬ ПИЛОТА</span><h3>Для первого клиента — отбор по запросу</h3><p>Гипотеза цены: 150 000 ₸ за месяц пилота для фонда или приёмной комиссии. Оплата за доступ к обезличенной подборке и согласованные знакомства. Цена не подтверждена интервью.</p></div><a href="#method" class="outline-button" data-view="method">Принципы отбора <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <section id="method-view" class="view" aria-labelledby="method-title" hidden><div class="section-head"><div><span class="kicker">03 / МЕТОДИКА</span><h2 id="method-title">Баллы, которые можно объяснить</h2><p>Прозрачная модель для демонстрации. Коэффициенты и качество источников должны быть проверены с партнёрами до реального запуска.</p></div></div><div class="method-grid"><div class="method-main"><div class="formula"><span>ФОРМУЛА ДЕМО</span><strong>Индекс = min(100, Σ баллов подтверждённых достижений)</strong><p>Баллы достижения = вес уровня × коэффициент результата. Непроверенные записи дают 0 баллов. Здесь нет «Elo» и национального перцентиля без данных реальной выборки.</p></div><div class="weight-table-wrap"><table><caption>Веса событий</caption><thead><tr><th scope="col">Уровень</th><th scope="col">Базовый вес</th></tr></thead><tbody><tr><td>Городской</td><td>12</td></tr><tr><td>Областной</td><td>20</td></tr><tr><td>Республиканский</td><td>30</td></tr><tr><td>Международный</td><td>40</td></tr></tbody></table></div><div class="weight-table-wrap"><table><caption>Коэффициенты результата</caption><thead><tr><th scope="col">Результат</th><th scope="col">Множитель</th></tr></thead><tbody><tr><td>Участие</td><td>0,25</td></tr><tr><td>Финал</td><td>0,60</td></tr><tr><td>Призовое место</td><td>0,80</td></tr><tr><td>Победа</td><td>1,00</td></tr></tbody></table></div></div><aside class="method-side"><div class="side-panel"><span class="side-index">ИСТОЧНИК ДОВЕРИЯ</span><h3>Подтверждает организатор</h3><p>В рабочем продукте организатор передаёт итоговый протокол с кодами участников и результатами. Запись сопоставляется с профилем только после подтверждения школьником и законным представителем.</p></div><div class="side-panel"><span class="side-index">МИНИМУМ ДАННЫХ</span><h3>Покупатель видит только нужное</h3><p>По умолчанию: псевдоним, регион, направление, индекс и источник результата. Контакт возможен только после отдельного согласия. Заявку можно отозвать.</p></div><div class="side-panel"><span class="side-index">ОГРАНИЧЕНИЕ</span><h3>Сравнение внутри направления</h3><p>Индекс информатики нельзя честно сравнивать с инженерией без калибровки. Демо показывает фильтр по специализации; валидировать веса предстоит на исторических данных.</p></div></aside></div></section>
+    </main>
+    <footer class="site-footer"><div><strong>TalentScore</strong><span>Прототип для Gambit Hackathon 2026 · HackHub</span></div><a href="materials.html">Материалы проекта</a><span>Данные и согласия на экране вымышлены.</span></footer>
+  </div>
+</body>
+</html>
